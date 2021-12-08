@@ -4,8 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/file/file_uploader_service.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/ui/widgets/image_picker_action_sheet.dart';
-import 'package:image_picker/image_picker.dart';
 
 class FileUploadServiceHomePage extends StatefulWidget {
   static const String routeName = 'file-upload-service-home-page';
@@ -20,27 +18,13 @@ class _FileUploadServiceHomePageState extends State<FileUploadServiceHomePage> {
   File? imageFile;
   bool _isLoadingGettingImage = false;
 
-  void _initGetImage() {
-    showCupertinoModalPopup(
-      context: context,
-      builder: (BuildContext context) => ImagePickerActionSheet(
-        fromCamera: () => _getImage(ImageSource.camera),
-        fromGallery: () => _getImage(ImageSource.gallery),
-        fileImage: imageFile,
-      ),
-    );
-  }
-
-  Future _getImage(ImageSource source) async {
-    Navigator.of(context).pop();
+  Future _getImage() async {
     setState(() => _isLoadingGettingImage = true);
-    final pickedImageFile = await _fileUploaderService.uploadImage(context, source: source);
+    final pickedImageFile = await _fileUploaderService.uploadImage(context);
     setState(() => _isLoadingGettingImage = false);
 
     if (pickedImageFile != null) {
-      setState(() {
-        imageFile = pickedImageFile;
-      });
+      setState(() => imageFile = pickedImageFile);
     }
   }
 
@@ -53,7 +37,7 @@ class _FileUploadServiceHomePageState extends State<FileUploadServiceHomePage> {
       ),
       body: Center(
         child: GestureDetector(
-          onTap: _isLoadingGettingImage ? null : _initGetImage,
+          onTap: _isLoadingGettingImage ? null : _getImage,
           child: Container(
             width: 200,
             height: 200,
@@ -73,6 +57,9 @@ class _FileUploadServiceHomePageState extends State<FileUploadServiceHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  const SizedBox(height: 70),
+                  if (_isLoadingGettingImage) const CircularProgressIndicator(),
+                  const SizedBox(height: 30),
                   Container(
                     height: 50,
                     width: 200,

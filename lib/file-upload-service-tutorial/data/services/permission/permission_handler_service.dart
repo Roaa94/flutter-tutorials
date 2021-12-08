@@ -18,6 +18,7 @@ class PermissionHandlerService implements PermissionService {
     PermissionStatus cameraPermissionStatus = await requestCameraPermission();
 
     if (cameraPermissionStatus != PermissionStatus.granted) {
+      print('😰 😰 😰 😰 😰 😰 Permission to camera was not granted! 😰 😰 😰 😰 😰 😰');
       await showDialog(
         context: context,
         builder: (_context) => AlertDialog(
@@ -46,6 +47,7 @@ class PermissionHandlerService implements PermissionService {
     PermissionStatus photosPermissionStatus = await requestPhotosPermission();
 
     if (photosPermissionStatus != PermissionStatus.granted) {
+      print('😰 😰 😰 😰 😰 😰 Permission to photos not granted! 😰 😰 😰 😰 😰 😰');
       await showDialog(
         context: context,
         builder: (_context) => AlertDialog(

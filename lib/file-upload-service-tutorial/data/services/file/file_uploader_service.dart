@@ -5,32 +5,54 @@ import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/fil
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/permission/permission_service.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/utils.dart';
+import 'package:flutter_tutorials/file-upload-service-tutorial/ui/widgets/image_picker_action_sheet.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FileUploaderService {
   final FileCompressionService _fileCompressionService = getIt<FileCompressionService>();
   final PermissionService _permissionService = getIt<PermissionService>();
 
+  Future<ImageSource?> _pickImageSource(BuildContext context) async {
+    ImageSource? pickedImageSource = await showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => ImagePickerActionSheet(),
+    );
+    if (pickedImageSource == null) {
+      return null;
+    }
+    return pickedImageSource;
+  }
+
+  Future<bool> _handleImageUploadPermissions(BuildContext context, ImageSource? _imageSource) async {
+    if (_imageSource == null) {
+      return false;
+    } else {
+      if (_imageSource == ImageSource.camera) {
+        return await _permissionService.handleCameraPermission(context);
+      } else {
+        return await _permissionService.handlePhotosPermission(context);
+      }
+    }
+  }
+
   Future<File?> uploadImage(
     BuildContext context, {
-    required ImageSource source,
     bool shouldCompress = true,
   }) async {
-    bool canProceed;
-    if (source == ImageSource.camera) {
-      canProceed = await _permissionService.handleCameraPermission(context);
-    } else {
-      canProceed = await _permissionService.handlePhotosPermission(context);
-    }
+    //Show image source picker (camera/gallery)
+    ImageSource? imageSource = await _pickImageSource(context);
+    // Handle permissions according to image source,
+    // returns false if image source picker was dismissed and null returned
+    bool canProceed = await _handleImageUploadPermissions(context, imageSource);
+
     if (!canProceed) {
-      print('😰 😰 😰 😰 😰 😰 Permission to photos OR camera was not granted! 😰 😰 😰 😰 😰 😰');
       return null;
     }
 
     File? processedPickedImageFile;
 
     final imagePicker = ImagePicker();
-    final rawPickedImageFile = await imagePicker.pickImage(source: source, imageQuality: 50);
+    final rawPickedImageFile = await imagePicker.pickImage(source: imageSource!, imageQuality: 50);
 
     if (rawPickedImageFile != null) {
       processedPickedImageFile = File(rawPickedImageFile.path);
