@@ -27,24 +27,23 @@ class FileUploaderService {
       return null;
     }
 
-    File? pickedImageFile;
+    File? processedPickedImageFile;
 
     final imagePicker = ImagePicker();
-    final pickedImageXFile = await imagePicker.pickImage(source: source, imageQuality: 50);
+    final rawPickedImageFile = await imagePicker.pickImage(source: source, imageQuality: 50);
 
-    if (pickedImageXFile != null) {
-      pickedImageFile = File(pickedImageXFile.path);
-      double _pickedImageFileSize = getMBFileSize(pickedImageFile);
+    if (rawPickedImageFile != null) {
+      processedPickedImageFile = File(rawPickedImageFile.path);
+      double _pickedImageFileSize = getMBFileSize(processedPickedImageFile);
       print('Picked image size in MB: $_pickedImageFileSize');
-      print('Picked Image File Size: $_pickedImageFileSize');
 
       if (shouldCompress && _pickedImageFileSize > 1) {
-        pickedImageFile = await _fileCompressionService.compressImageUntilTarget(
-          pickedImageFile,
-          tempKey: pickedImageXFile.name,
+        processedPickedImageFile = await _fileCompressionService.compressImage(
+          processedPickedImageFile,
+          tempKey: rawPickedImageFile.name,
         );
       }
     }
-    return pickedImageFile;
+    return processedPickedImageFile;
   }
 }
