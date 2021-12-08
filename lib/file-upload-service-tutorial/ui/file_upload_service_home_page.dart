@@ -32,7 +32,7 @@ class _FileUploadServiceHomePageState extends State<FileUploadServiceHomePage> {
   }
 
   Future _getImage(ImageSource source) async {
-    // Navigator.of(context).pop();
+    Navigator.of(context).pop();
     setState(() => _isLoadingGettingImage = true);
     final pickedImageFile = await _fileUploaderService.uploadImage(context, source: source);
     setState(() => _isLoadingGettingImage = false);
@@ -67,6 +67,26 @@ class _FileUploadServiceHomePageState extends State<FileUploadServiceHomePage> {
                       image: FileImage(imageFile!),
                       fit: BoxFit.cover,
                     ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 200,
+                    color: Colors.black.withOpacity(0.5),
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Center(
+                      child: Text(
+                        imageFile == null ? 'Upload Image' : 'Change Image',
+                        style: const TextStyle(color: Colors.white, fontSize: 16),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
