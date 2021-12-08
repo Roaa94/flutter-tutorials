@@ -24,7 +24,7 @@ class FileCompressionService {
 
   Future<File?> compressImage(
     File imageFile, {
-    required String? tempKey,
+    required String tempKey,
   }) async {
     print('🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄 🌄');
     print('Compressing image: ${imageFile.path}, original size: ${getMBFileSize(imageFile)}');
