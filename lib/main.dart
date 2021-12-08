@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/ui/file_upload_service_home_page.dart';
-
-import 'file-upload-service-tutorial/data/services/service_locator.dart';
 
 void main() {
   setupServiceLocator();
