@@ -15,7 +15,7 @@ abstract class MediaServiceInterface {
 
   Future<File?> uploadImage(
     BuildContext context,
-    AppImageSource imageSource, {
+    AppImageSource appImageSource, {
     bool shouldCompress = true,
   });
 

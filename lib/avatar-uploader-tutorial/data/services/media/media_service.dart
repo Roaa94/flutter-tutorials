@@ -30,18 +30,18 @@ class MediaService implements MediaServiceInterface {
   @override
   Future<File?> uploadImage(
     BuildContext context,
-    AppImageSource imageSource, {
+    AppImageSource appImageSource, {
     bool shouldCompress = true,
   }) async {
     // Handle permissions according to image source,
-    bool canProceed = await _handleImageUploadPermissions(context, imageSource);
+    bool canProceed = await _handleImageUploadPermissions(context, appImageSource);
 
     if (canProceed) {
       File? processedPickedImageFile;
 
       // Convert our own AppImageSource into a format readable by the used package
       // In this case it's an ImageSource enum
-      ImageSource? _imageSource = ImageSource.values.byName(imageSource.name);
+      ImageSource? _imageSource = ImageSource.values.byName(appImageSource.name);
 
       final imagePicker = ImagePicker();
       final rawPickedImageFile = await imagePicker.pickImage(source: _imageSource, imageQuality: 50);
