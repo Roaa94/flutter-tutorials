@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/file/file_compression_service.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/permission/permission_service.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/utils.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/file/file_compression_service.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/permission/permission_service.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FileUploaderService {

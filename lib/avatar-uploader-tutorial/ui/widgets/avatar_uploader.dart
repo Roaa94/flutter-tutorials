@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/file/file_uploader_service.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/file/file_uploader_service.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'image_picker_action_sheet.dart';

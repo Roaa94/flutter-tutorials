@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/common/ui/widgets/app_alert_dialog.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/permission/permission_service.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/permission/permission_service.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class PermissionHandlerPermissionService implements PermissionService {

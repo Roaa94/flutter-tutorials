@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter_image_compress/flutter_image_compress.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/utils.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/utils.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 class FileCompressionService {
