@@ -1,9 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/file/file_uploader_service.dart';
-import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/ui/widgets/avatar_uploader.dart';
 
 class FileUploadServiceHomePage extends StatelessWidget {

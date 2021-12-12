@@ -1,8 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/file/file_uploader_service.dart';
 import 'package:flutter_tutorials/file-upload-service-tutorial/data/services/service_locator.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'image_picker_action_sheet.dart';
 
 class AvatarUploader extends StatefulWidget {
   @override
@@ -15,9 +19,19 @@ class _AvatarUploaderState extends State<AvatarUploader> {
   File? imageFile;
   bool _isLoadingGettingImage = false;
 
-  Future _getImage() async {
+  Future<ImageSource?> _pickImageSource() async {
+    ImageSource? pickedImageSource = await showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) => ImagePickerActionSheet(),
+    );
+    if (pickedImageSource != null) {
+      _getImage(pickedImageSource);
+    }
+  }
+
+  Future _getImage(ImageSource _imageSource) async {
     setState(() => _isLoadingGettingImage = true);
-    final pickedImageFile = await _fileUploaderService.uploadImage(context);
+    final pickedImageFile = await _fileUploaderService.uploadImage(context, _imageSource);
     setState(() => _isLoadingGettingImage = false);
 
     if (pickedImageFile != null) {
@@ -28,7 +42,7 @@ class _AvatarUploaderState extends State<AvatarUploader> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _isLoadingGettingImage ? null : _getImage,
+      onTap: _isLoadingGettingImage ? null : _pickImageSource,
       child: Container(
         width: 200,
         height: 200,
