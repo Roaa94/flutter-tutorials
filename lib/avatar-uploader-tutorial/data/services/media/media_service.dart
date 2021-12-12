@@ -6,7 +6,6 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/media/media_service_interface.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/permission/permission_service.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
-import 'package:flutter_tutorials/avatar-uploader-tutorial/data/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
