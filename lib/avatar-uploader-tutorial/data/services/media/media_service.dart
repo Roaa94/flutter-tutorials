@@ -31,8 +31,10 @@ class MediaService implements MediaServiceInterface {
     AppImageSource imageSource, {
     bool shouldCompress = true,
   }) async {
-    // Handle permissions according to image source,
+    // Convert our own AppImageSource into a format readable by the used package
+    // In this case it's an ImageSource enum
     ImageSource? _imageSource = ImageSource.values.byName(imageSource.name);
+    // Handle permissions according to image source,
     bool canProceed = await _handleImageUploadPermissions(context, _imageSource);
 
     if (canProceed) {
