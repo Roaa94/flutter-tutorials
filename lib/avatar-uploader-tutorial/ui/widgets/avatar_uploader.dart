@@ -29,11 +29,11 @@ class _AvatarUploaderState extends State<AvatarUploader> {
 
   Future _getImage(AppImageSource _imageSource) async {
     setState(() => _isLoadingGettingImage = true);
-    final pickedImageFile = await _mediaService.uploadImage(context, _imageSource);
+    final _pickedImageFile = await _mediaService.uploadImage(context, _imageSource);
     setState(() => _isLoadingGettingImage = false);
 
-    if (pickedImageFile != null) {
-      setState(() => imageFile = pickedImageFile);
+    if (_pickedImageFile != null) {
+      setState(() => imageFile = _pickedImageFile);
     }
   }
 
