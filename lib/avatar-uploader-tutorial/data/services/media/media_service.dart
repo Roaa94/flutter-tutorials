@@ -59,7 +59,6 @@ class MediaService implements MediaServiceInterface {
 
   @override
   Future<File?> compressFile(File file, {int quality = 30}) async {
-    print('Compressing image: ${file.path}, original size: ${getMBFileSize(file)}');
     final dir = await path_provider.getTemporaryDirectory();
     final targetPath = dir.absolute.path + '/${Random().nextInt(1000)}-temp.jpg';
 
