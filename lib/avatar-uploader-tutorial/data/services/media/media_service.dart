@@ -14,14 +14,16 @@ class MediaService implements MediaServiceInterface {
   @override
   PermissionService get permissionService => getIt<PermissionService>();
 
-  Future<bool> _handleImageUploadPermissions(BuildContext context, ImageSource? _imageSource) async {
+  Future<bool> _handleImageUploadPermissions(BuildContext context, AppImageSource? _imageSource) async {
     if (_imageSource == null) {
       return false;
     }
-    if (_imageSource == ImageSource.camera) {
+    if (_imageSource == AppImageSource.camera) {
       return await permissionService.handleCameraPermission(context);
-    } else {
+    } else if (_imageSource == AppImageSource.gallery) {
       return await permissionService.handlePhotosPermission(context);
+    } else {
+      return false;
     }
   }
 
@@ -31,14 +33,15 @@ class MediaService implements MediaServiceInterface {
     AppImageSource imageSource, {
     bool shouldCompress = true,
   }) async {
-    // Convert our own AppImageSource into a format readable by the used package
-    // In this case it's an ImageSource enum
-    ImageSource? _imageSource = ImageSource.values.byName(imageSource.name);
     // Handle permissions according to image source,
-    bool canProceed = await _handleImageUploadPermissions(context, _imageSource);
+    bool canProceed = await _handleImageUploadPermissions(context, imageSource);
 
     if (canProceed) {
       File? processedPickedImageFile;
+
+      // Convert our own AppImageSource into a format readable by the used package
+      // In this case it's an ImageSource enum
+      ImageSource? _imageSource = ImageSource.values.byName(imageSource.name);
 
       final imagePicker = ImagePicker();
       final rawPickedImageFile = await imagePicker.pickImage(source: _imageSource, imageQuality: 50);
