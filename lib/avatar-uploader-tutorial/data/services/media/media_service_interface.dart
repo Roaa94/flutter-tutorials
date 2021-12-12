@@ -19,5 +19,5 @@ abstract class MediaServiceInterface {
     bool shouldCompress = true,
   });
 
-  Future<File?> compressFile(File file);
+  Future<File?> compressFile(File file, {int quality = 30});
 }
