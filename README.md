@@ -1,6 +1,6 @@
 # Flutter Tutorials
 
-This application contains source code of [tutorials I publish on Medium](https://medium.com/@roaa_k).
+This application contains source code of [tutorials I publish on Medium](https://medium.com/@roaa_k). Updated frequently with more tutorials as they're published.
 
 ## Tutorials List
 
