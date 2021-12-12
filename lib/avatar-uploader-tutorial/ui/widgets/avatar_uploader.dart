@@ -18,18 +18,18 @@ class _AvatarUploaderState extends State<AvatarUploader> {
   bool _isLoadingGettingImage = false;
 
   Future<AppImageSource?> _pickImageSource() async {
-    AppImageSource? pickedImageSource = await showCupertinoModalPopup(
+    AppImageSource? _appImageSource = await showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) => ImagePickerActionSheet(),
     );
-    if (pickedImageSource != null) {
-      _getImage(pickedImageSource);
+    if (_appImageSource != null) {
+      _getImage(_appImageSource);
     }
   }
 
-  Future _getImage(AppImageSource _imageSource) async {
+  Future _getImage(AppImageSource _appImageSource) async {
     setState(() => _isLoadingGettingImage = true);
-    final _pickedImageFile = await _mediaService.uploadImage(context, _imageSource);
+    final _pickedImageFile = await _mediaService.uploadImage(context, _appImageSource);
     setState(() => _isLoadingGettingImage = false);
 
     if (_pickedImageFile != null) {
