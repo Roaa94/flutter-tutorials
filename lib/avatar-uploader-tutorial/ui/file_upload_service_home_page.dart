@@ -9,7 +9,7 @@ class FileUploadServiceHomePage extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text('File Upload Service'),
+        title: const Text('Avatar Uploader'),
       ),
       body: Center(
         child: AvatarUploader(),
