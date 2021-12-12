@@ -2,9 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/file/file_uploader_service.dart';
+import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/media/media_service_interface.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
-import 'package:image_picker/image_picker.dart';
 
 import 'image_picker_action_sheet.dart';
 
@@ -14,13 +13,13 @@ class AvatarUploader extends StatefulWidget {
 }
 
 class _AvatarUploaderState extends State<AvatarUploader> {
-  final FileUploaderService _fileUploaderService = getIt<FileUploaderService>();
+  final MediaServiceInterface _mediaService = getIt<MediaServiceInterface>();
 
   File? imageFile;
   bool _isLoadingGettingImage = false;
 
-  Future<ImageSource?> _pickImageSource() async {
-    ImageSource? pickedImageSource = await showCupertinoModalPopup(
+  Future<AppImageSource?> _pickImageSource() async {
+    AppImageSource? pickedImageSource = await showCupertinoModalPopup(
       context: context,
       builder: (BuildContext context) => ImagePickerActionSheet(),
     );
@@ -29,9 +28,9 @@ class _AvatarUploaderState extends State<AvatarUploader> {
     }
   }
 
-  Future _getImage(ImageSource _imageSource) async {
+  Future _getImage(AppImageSource _imageSource) async {
     setState(() => _isLoadingGettingImage = true);
-    final pickedImageFile = await _fileUploaderService.uploadImage(context, _imageSource);
+    final pickedImageFile = await _mediaService.uploadImage(context, _imageSource);
     setState(() => _isLoadingGettingImage = false);
 
     if (pickedImageFile != null) {
