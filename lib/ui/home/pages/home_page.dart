@@ -10,14 +10,10 @@ class HomePage extends StatelessWidget {
         title: const Text('Flutter Tutorials'),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: List.generate(
-            AppData.tutorials.length,
-            (i) => TutorialListItem(
-              title: AppData.tutorials[i].title,
-              description: AppData.tutorials[i].description,
-            ),
+            AppData.appTutorials.length,
+            (i) => TutorialListItem(AppData.appTutorials[i]),
           ),
         ),
       ),

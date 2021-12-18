@@ -1,24 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_tutorials/avatar-uploader-tutorial/ui/file_upload_service_home_page.dart';
+import 'package:flutter_tutorials/data/models/tutorial.dart';
 
 class TutorialListItem extends StatelessWidget {
-  final String title;
-  final String description;
+  final Tutorial tutorial;
 
-  const TutorialListItem({
-    required this.title,
-    required this.description,
-  });
+  const TutorialListItem(this.tutorial);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(FileUploadServiceHomePage.routeName),
+      onTap: tutorial.tutorialPageRoute == null ? null : () => Navigator.of(context).pushNamed(tutorial.tutorialPageRoute!),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 15),
         decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(width: 1, color: Colors.black.withOpacity(0.2)),
             bottom: BorderSide(width: 1, color: Colors.black.withOpacity(0.2)),
           ),
         ),
@@ -28,9 +23,9 @@ class TutorialListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: Theme.of(context).textTheme.headline6),
+                  Text(tutorial.title, style: Theme.of(context).textTheme.headline6),
                   const SizedBox(height: 10),
-                  Text(description),
+                  Text(tutorial.description),
                 ],
               ),
             ),
