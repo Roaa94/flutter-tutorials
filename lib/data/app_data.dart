@@ -16,6 +16,7 @@ class AppData {
       title: 'ToDo List With RefreshIndicator',
       description: 'Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetch data',
       tutorialPageRoute: RefreshIndicatorThreadHome.routeName,
+      tutorialLink: 'https://twitter.com/roaakdm/status/1472181621759655939'
     ),
   ];
 }
