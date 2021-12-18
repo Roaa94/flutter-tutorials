@@ -8,3 +8,7 @@ This application contains source code of [tutorials I publish on Medium](https:/
 
 Allow image upload in your Flutter app with one line of code in your widget while handling everything from camera &
 gallery permissions to image compression under the hood with GetIt and the service locator pattern.
+
+2. [ToDo List With RefreshIndicator](https://twitter.com/roaakdm/status/1472181621759655939)
+
+Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetch data
