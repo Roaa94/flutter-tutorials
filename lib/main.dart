@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/ui/file_upload_service_home_page.dart';
+import 'package:flutter_tutorials/refresh-indicator-thread/refresh_indicator_thread_home.dart';
 import 'package:flutter_tutorials/ui/home/pages/home_page.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         FileUploadServiceHomePage.routeName: (context) => FileUploadServiceHomePage(),
+        RefreshIndicatorThreadHome.routeName: (context) => RefreshIndicatorThreadHome(),
       },
       home: HomePage(),
     );

@@ -12,5 +12,10 @@ class AppData {
       tutorialPageRoute: FileUploadServiceHomePage.routeName,
       tutorialLink: 'https://medium.com/@roaa_k/flutter-image-uploader-with-app-permissions-and-compression-using-getit-services-59ffea13f913',
     ),
+    Tutorial(
+      title: 'ToDo List With RefreshIndicator',
+      description: 'Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetch data',
+      tutorialPageRoute: RefreshIndicatorThreadHome.routeName,
+    ),
   ];
 }
