@@ -197,24 +197,13 @@ class PrimaryColorSwitcher extends StatelessWidget {
 }
 
 class AppColors {
-  static List<String> hexColors = [
-    'd23156',
-    '16b9fd',
-    '13d0c1',
-    'e5672f',
-    'b73d99',
+  static List<Color> primaryColors = const [
+    Color(0xffd23156),
+    Color(0xff16b9fd),
+    Color(0xff13d0c1),
+    Color(0xffe5672f),
+    Color(0xffb73d99),
   ];
-
-  static List<Color> get primaryColors {
-    List<Color> _primaryColors = [];
-
-    for (String hexColor in hexColors) {
-      Color _color = Color(int.parse('0xff$hexColor'));
-      _primaryColors.add(_color);
-    }
-
-    return _primaryColors;
-  }
 
   static Color getShade(Color color, {bool darker = false, double value = .1}) {
     assert(value >= 0 && value <= 1);
@@ -232,7 +221,7 @@ class AppColors {
       200: getShade(color, value: 0.3),
       300: getShade(color, value: 0.2),
       400: getShade(color, value: 0.1),
-      500: color,
+      500: color, //Primary value
       600: getShade(color, value: 0.1, darker: true),
       700: getShade(color, value: 0.15, darker: true),
       800: getShade(color, value: 0.2, darker: true),
