@@ -10,7 +10,6 @@ const double _containerWidth = 450.0;
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print('Rebuilt App!');
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
