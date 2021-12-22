@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +11,10 @@ class RefreshIndicatorThreadHome extends StatefulWidget {
 }
 
 class _RefreshIndicatorThreadHomeState extends State<RefreshIndicatorThreadHome> {
-  late Future<List<dynamic>> getToDos;
+  StreamController<List<dynamic>> streamController = StreamController<List<dynamic>>();
 
   Future<List<dynamic>> _getToDos() async {
-    const endpoint = 'https://jsonplaceholder.typicode.com/todos?userId=1';
+    const endpoint = 'https://jsonplaceholder.typicode.com/todos?userId=2';
     print('Fetching from: $endpoint');
     var response = await Dio().get(endpoint);
     return response.data;
@@ -20,7 +22,7 @@ class _RefreshIndicatorThreadHomeState extends State<RefreshIndicatorThreadHome>
 
   @override
   void initState() {
-    getToDos = _getToDos();
+    _getToDos().then((todos) => streamController.add(todos));
     super.initState();
   }
 
@@ -31,20 +33,20 @@ class _RefreshIndicatorThreadHomeState extends State<RefreshIndicatorThreadHome>
       appBar: AppBar(
         title: const Text('Refresh Indicator Example'),
       ),
-      body: FutureBuilder<List<dynamic>>(
-        future: getToDos,
-        builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-          if (snapshot.hasError) {
-            return const Center(child: Text('An Error Occurred'));
-          } else {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-              case ConnectionState.active:
-                return const Center(child: CircularProgressIndicator());
-              case ConnectionState.done:
-                return RefreshIndicator(
-                  onRefresh: () async => setState(() {}),
-                  child: SingleChildScrollView(
+      body: RefreshIndicator(
+        onRefresh: () async => streamController.add(await _getToDos()),
+        child: StreamBuilder<List<dynamic>>(
+          stream: streamController.stream,
+          builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+            if (snapshot.hasError) {
+              return const Center(child: Text('An Error Occurred'));
+            } else {
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return const Center(child: CircularProgressIndicator());
+                case ConnectionState.active:
+                case ConnectionState.done:
+                  return SingleChildScrollView(
                     clipBehavior: Clip.none,
                     physics: const AlwaysScrollableScrollPhysics(),
                     child: Column(
@@ -88,14 +90,14 @@ class _RefreshIndicatorThreadHomeState extends State<RefreshIndicatorThreadHome>
                         ),
                       ],
                     ),
-                  ),
-                );
-              case ConnectionState.none:
-              default:
-                return const Center(child: Text('Nothing!'));
+                  );
+                case ConnectionState.none:
+                default:
+                  return const Center(child: Text('Nothing!'));
+              }
             }
-          }
-        },
+          },
+        ),
       ),
     );
   }
