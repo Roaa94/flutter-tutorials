@@ -12,3 +12,7 @@ gallery permissions to image compression under the hood with GetIt and the servi
 2. [ToDo List With RefreshIndicator](https://twitter.com/roaakdm/status/1472181621759655939)
 
 Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetch data
+
+3. [ScrollPhysics Types With Examples](https://twitter.com/roaakdm/status/1473375063600779272)
+
+See all types of ScrollPhysics with example usages and code
