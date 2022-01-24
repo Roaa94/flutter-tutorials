@@ -16,3 +16,6 @@ Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetc
 3. [ScrollPhysics Types With Examples](https://twitter.com/roaakdm/status/1473375063600779272)
 
 See all types of ScrollPhysics with example usages and code
+
+## Minimum Requirements
+Dart Version 2.15
