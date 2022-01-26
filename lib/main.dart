@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/data/services/service_locator.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/ui/file_upload_service_home_page.dart';
 import 'package:flutter_tutorials/refresh-indicator-thread/refresh_indicator_thread_home.dart';
+import 'package:flutter_tutorials/reorderable-list-view/pages/reorderable_list_view_page.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/always_scrollable_scroll_physics_example.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/bouncing_scroll_physics_example.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/clamping_scroll_physics_example.dart';
@@ -26,6 +27,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.teal,
         primarySwatch: Colors.teal,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
+        ),
       ),
       routes: <String, WidgetBuilder>{
         FileUploadServiceHomePage.routeName: (context) => FileUploadServiceHomePage(),
@@ -36,6 +44,7 @@ class MyApp extends StatelessWidget {
         ClampingScrollPhysicsExample.routeName: (context) => ClampingScrollPhysicsExample(),
         FixedExtentScrollPhysicsExample.routeName: (context) => FixedExtentScrollPhysicsExample(),
         AlwaysScrollableScrollPhysicsExample.routeName: (context) => AlwaysScrollableScrollPhysicsExample(),
+        ReorderableListViewPage.routeName: (context) => ReorderableListViewPage(),
       },
       home: HomePage(),
     );
