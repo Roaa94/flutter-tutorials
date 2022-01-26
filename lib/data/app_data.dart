@@ -1,3 +1,4 @@
+import 'package:flutter_tutorials/animated-cross-fade/pages/animated_cross_fade_example.dart';
 import 'package:flutter_tutorials/avatar-uploader-tutorial/ui/file_upload_service_home_page.dart';
 import 'package:flutter_tutorials/data/models/scroll_physics_data.dart';
 import 'package:flutter_tutorials/data/models/tutorial.dart';
@@ -33,6 +34,11 @@ class AppData {
       title: 'ReorderableListView',
       description: 'Easily allow your users to reorder a list using the ReorderableListView widget',
       tutorialPageRoute: ReorderableListViewPage.routeName,
+    ),
+    Tutorial(
+      title: 'AnimatedCrossFade widget',
+      description: 'Use the AnimatedCrossFade widget to apply smooth fade animation when switching between two widgets for a better user experience, instead of abruptly ',
+      tutorialPageRoute: AnimatedCrossFadeExample.routeName,
     ),
   ];
 
