@@ -2,6 +2,7 @@ import 'package:flutter_tutorials/avatar-uploader-tutorial/ui/file_upload_servic
 import 'package:flutter_tutorials/data/models/scroll_physics_data.dart';
 import 'package:flutter_tutorials/data/models/tutorial.dart';
 import 'package:flutter_tutorials/refresh-indicator-thread/refresh_indicator_thread_home.dart';
+import 'package:flutter_tutorials/reorderable-list-view/pages/reorderable_list_view_page.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/always_scrollable_scroll_physics_example.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/bouncing_scroll_physics_example.dart';
 import 'package:flutter_tutorials/scroll-physics-thread/clamping_scroll_physics_example.dart';
@@ -27,6 +28,11 @@ class AppData {
       title: 'ScrollPhysics Types With Examples',
       description: 'See all types of ScrollPhysics with example usages and code',
       tutorialPageRoute: ScrollPhysicsThreadHome.routeName,
+    ),
+    Tutorial(
+      title: 'ReorderableListView',
+      description: 'Use the AnimatedList widget to animate list items into or out of the list',
+      tutorialPageRoute: ReorderableListViewPage.routeName,
     ),
   ];
 
