@@ -37,7 +37,7 @@ class AppData {
     ),
     Tutorial(
       title: 'AnimatedCrossFade widget',
-      description: 'Use the AnimatedCrossFade widget to apply smooth fade animation when switching between two widgets for a better user experience, instead of abruptly ',
+      description: 'Use the AnimatedCrossFade widget to apply smooth fade animation when switching between two widgets for a better user experience, instead of abruptly doing so',
       tutorialPageRoute: AnimatedCrossFadeExample.routeName,
     ),
   ];

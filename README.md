@@ -17,9 +17,13 @@ Fetch a ToDo list from jsonplaceholder and use RefreshIndicator widget to refetc
 
 See all types of ScrollPhysics with example usages and code
 
-4. [ReorderableListView](https://twitter.com/roaakdm/status/1475957270064283652)
+4. [ReorderableListView Widget](https://twitter.com/roaakdm/status/1475957270064283652)
 
 Easily allow your users to reorder a list using the ReorderableListView widget
+
+4. [AnimatedCrossFade Widget](https://twitter.com/roaakdm/status/1486306936274440192)
+
+Use the AnimatedCrossFade widget to apply smooth fade animation when switching between two widgets for a better user experience, instead of abruptly doing so
 
 ## Minimum Requirements
 Dart Version 2.15
