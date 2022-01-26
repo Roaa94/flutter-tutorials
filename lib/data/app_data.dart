@@ -31,7 +31,7 @@ class AppData {
     ),
     Tutorial(
       title: 'ReorderableListView',
-      description: 'Use the AnimatedList widget to animate list items into or out of the list',
+      description: 'Easily allow your users to reorder a list using the ReorderableListView widget',
       tutorialPageRoute: ReorderableListViewPage.routeName,
     ),
   ];
